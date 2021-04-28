@@ -8,26 +8,91 @@
             <input type="submit" value="Sign Out"/>
         </form>
     </div>
+
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>active</th>
+            <th>roles</th>
+        </tr>
+        {{#users}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{username}}</td>
+                <td>{{active}}</td>
+                <td>{{roles}}</td>
+            </tr>
+        {{/users}}
+    </table>
+
     <div>
-        <form method="post">
+        <form method="post"action="add">
             <input type="text" name="text" placeholder="Введите сообщение" />
             <input type="text" name="tag" placeholder="Тэг">
             <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
             <button type="submit">Добавить</button>
         </form>
     </div>
+
     <div>Список сообщений</div>
-    <form method="post" action="filter">
-        <input type="text" name="filter">
+
+    <form method="post" action="filterTag">
+        <input type="text" name="filterTag">
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
         <button type="submit">Найти</button>
     </form>
-    {{#messages}}
+
+    <form method="post" action="filterAuthor">
+        <input type="text" name="filterAuthor">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Найти автора</button>
+    </form>
+
+    <form method="post" action="filterDate">
+        <input type="text" name="filterDate">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Введите дату формата yyyy.MM.dd </button>
+    </form>
+
     <div>
-        <b>{{id}}</b>
-        <span>{{text}}</span>
-        <i>{{tag}}</i>
+        <form method="post" action="filterTagAuthor">
+            <input type="text" name="authorName" placeholder="Имя автора" />
+            <input type="text" name="tagName" placeholder="Тэг сообщения">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <button type="submit">Добавить</button>
+        </form>
     </div>
-    {{/messages}}
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid #999;
+            padding: 5px;
+        }
+    </style>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Text</th>
+            <th>Author name</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+
+        {{#messages}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{text}}</td>
+                <td>{{authorName}}</td>
+                <td>{{messageDate}}</td>
+                <td>{{messageTime}}</td>
+            </tr>
+        {{/messages}}
+    </table>
 </body>
-</html>
