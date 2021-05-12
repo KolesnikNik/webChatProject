@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div>
+    <form method="post"action="/user">
+        <input type="text" name="username" value="{{user.username}}" />
+        {{#roles}}
+            <tr>
+                <td><label><input type="checkbox" name="{{name}}" id="22" ></label>{{name}}</td>
+                <script>
+document.ready(function () {'22'.change(function () {if(this == "USER"){this.checked();}
+
+})
+
+})
+                </script>
+            </tr>
+
+        {{/roles}}
+
+        <input type="hidden" name="userId" value="{{user.id}}" />
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Редактировать</button>
+    </form>
+</div>
+</body>
+</html>

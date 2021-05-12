@@ -3,7 +3,6 @@ package com.example.test_ex1.service;
 import com.example.test_ex1.domain.Message;
 import com.example.test_ex1.domain.User;
 import com.example.test_ex1.repos.MessageRepo;
-import com.example.test_ex1.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,11 @@ import java.util.Map;
 @Service
 public class AddMessageService {
 
-    @Autowired
-    private MessageRepo messageRepo;
+    private final MessageRepo messageRepo;
+
+    public AddMessageService(MessageRepo messageRepo) {
+        this.messageRepo = messageRepo;
+    }
 
     public String addMessage(
             @AuthenticationPrincipal User user,

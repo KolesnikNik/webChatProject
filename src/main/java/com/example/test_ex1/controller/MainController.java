@@ -1,13 +1,15 @@
 package com.example.test_ex1.controller;
 
 import com.example.test_ex1.domain.User;
-import com.example.test_ex1.service.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.test_ex1.service.AddMessageService;
+import com.example.test_ex1.service.DefaultMessageService;
+import com.example.test_ex1.service.MessageService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.Map;
 
 @Controller
@@ -29,8 +31,8 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(Map<String, Object> model,Map<String, Object> modelUsers) {
-        return defaultMessageService.getString(model,modelUsers);
+    public String main(Map<String, Object> model) {
+        return defaultMessageService.getString(model);
     }
 
     @PostMapping("/add")

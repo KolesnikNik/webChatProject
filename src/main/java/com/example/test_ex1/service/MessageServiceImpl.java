@@ -62,8 +62,8 @@ public class MessageServiceImpl implements MessageService {
     }
     @Override
     public String findMessageByAuthorAndTag(
-            @RequestParam String author,
-            @RequestParam String tag,
+            String author,
+            String tag,
             Map<String, Object> model) {
 
         if (tag != null

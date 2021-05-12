@@ -8,24 +8,7 @@
             <input type="submit" value="Sign Out"/>
         </form>
     </div>
-
-
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>active</th>
-            <th>roles</th>
-        </tr>
-        {{#users}}
-            <tr>
-                <td>{{id}}</td>
-                <td>{{username}}</td>
-                <td>{{active}}</td>
-                <td>{{roles}}</td>
-            </tr>
-        {{/users}}
-    </table>
+    <span><a href="/user">Users</a> </span>
 
     <div>
         <form method="post"action="add">

@@ -12,15 +12,14 @@ import java.util.Map;
 @Service
 public class DefaultMessageService {
 
-    @Autowired
-    private MessageRepo messageRepo;
-    @Autowired
-    private UserRepo userRepo;
+    private final MessageRepo messageRepo;
 
-    public String getString(Map<String, Object> model,Map<String, Object> modelUsers) {
+    public DefaultMessageService(MessageRepo messageRepo, UserRepo userRepo) {
+        this.messageRepo = messageRepo;
+    }
+
+    public String getString(Map<String, Object> model) {
         Iterable<Message> messages = messageRepo.findAll();
-        Iterable<User> users = userRepo.findAll();
-        modelUsers.put("users",users);
         model.put("messages", messages);
         return "main";
     }
